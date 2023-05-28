@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./formData.css";
 
 const contenidoInit = {
     contenido_id: 0,
@@ -7,6 +8,7 @@ const contenidoInit = {
     descripcion: "",
     categoria: "",
     genero: "",
+    imgane: "",
 };
 
 
@@ -21,6 +23,7 @@ const FormData = ({agregarDato, onSubmit, contenidoEditado, setContenidoEditado,
         descripcion,
         categoria,
         genero,
+        imagen,
     } = contenido;
 
     const handleInputChange =(e) => {
@@ -41,14 +44,15 @@ const FormData = ({agregarDato, onSubmit, contenidoEditado, setContenidoEditado,
                     "fecha_estreno":"",
                     "descripcion": "",
                     "categoria": "",
-                    "genero": ""
+                    "genero": "",
+                    "imagen": ""
                 }
             )
         }
     },[contenidoEditado])
 
     return(
-        <div class="formBody">
+        <form class="formBody">
             {contenidoEditado !== null ?(<h1>Editar Contenido</h1>) : (<h1>Formulario</h1>)}
             <div className="formData">
                 <h1>Ingreso de Datos</h1>
@@ -74,18 +78,7 @@ const FormData = ({agregarDato, onSubmit, contenidoEditado, setContenidoEditado,
                         onChange={handleInputChange}
                     />
                 </div>
-                <div class="descripcion">
-                    <label for="inputdescripcion" class="formLabel"></label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Descripcion"
-                        id="descripcion"
-                        name="descripcion"
-                        value={descripcion}
-                        onChange={handleInputChange}
-                    />
-                </div>
+                
                 <div class="categoria">
                     <label for="inputcategoria" class="formLabel"></label>
                     <input
@@ -110,10 +103,33 @@ const FormData = ({agregarDato, onSubmit, contenidoEditado, setContenidoEditado,
                         onChange={handleInputChange}
                     />
                 </div>
+                <div class="descripcion">
+                    <label for="inputdescripcion" class="formLabel"></label>
+                    <textarea
+                        type="text"
+                        class="form-control"
+                        placeholder="Descripcion"
+                        id="descripcion"
+                        name="descripcion"
+                        value={descripcion}
+                        onChange={handleInputChange}
+                    />
+                </div>
+                <div>
+                <label for="img" class="formLabel"></label>
+                    <input
+                        type="file"
+                        accept="image/*"
+                        class="form-control"
+                        placeholder="Ingrese imagen"
+                        value={genero}
+                        onChange={handleInputChange}
+                    /> 
+                </div>
             </div>
             
             
-        </div>);
+        </form>);
 };
 
 export default FormData;

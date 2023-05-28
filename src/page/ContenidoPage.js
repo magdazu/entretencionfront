@@ -1,11 +1,11 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import {FormData} from "../component";
+import TablaContenido from "../component/tablaContenido/TablaContenido";
 import { getAll, contenidoAdd, contenidoEdit, contenidoDelete } from "../services/ContenidoService";
 
 
 
-const AdminPage = () =>{
+const ContenidoPage = () =>{
     const [contenido, setContenido]=useState([]);
     const [contenidoEditado, setContenidoEditado] = useState(null);
     
@@ -31,22 +31,14 @@ const AdminPage = () =>{
     useEffect(()=>{
         obtenerContenido();
     },[contenido])
-
-    return(
-        <div className="container mt-4">
-            <div className="row">
-                <FormData 
-                    agregarContenido={agregarContenido}
-                    contenidoEditado={contenidoEditado}
-                    setContenidoEditado={setContenidoEditado}
-                    editarContenido={editarContenido}
-                />
-                
-            </div>
-            
-        </div>
-    );
-
+    return (<div className="container mt-4">
+                <div className="row">
+                    <TablaContenido
+                        contenido={contenido}
+                        eliminarContenido={eliminarContenido}
+                        setContenidoEditado={setContenidoEditado}/>
+                </div>
+            </div>);
 };
 
-export default AdminPage;
+export default ContenidoPage;

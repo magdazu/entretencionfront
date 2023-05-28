@@ -1,33 +1,26 @@
 import React from "react";
+import "./tablaContenido.css"
 
 const TablaContenido = ({contenido}) =>{
-    return <div>
+    return <section>
             <h1>Lista Contenido</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th scope="col">Titulo</th>
-                        <th scope="col">Fecha Estreno</th>
-                        <th scope="col">Descripcion</th>
-                        <th scope="col">Categoria</th>
-                        <th scope="col">Genero</th>
-                    </tr>
-                </thead>
+            <table class= "tabla">
+                
                 <tbody>
                     {contenido.map(contenido =>(
                         <tr>
-                        <th>
+                            <th scope="row">{contenido.imagen}</th>
                             <td>{contenido.titulo}</td>
                             <td>{contenido.fecha}</td>
                             <td>{contenido.descripcion}</td>
                             <td>{contenido.categoria}</td>
                             <td>{contenido.genero}</td>
-                        </th>
+                            
                         </tr>
                     ))}
                 </tbody>
             </table>
-        </div>
+        </section>
 };
 
 export default TablaContenido;
